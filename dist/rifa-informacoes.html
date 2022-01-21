@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>TecGo Sorteios | Rifa Informações</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- jQuery-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles-rifa-informacoes.css" rel="stylesheet" />
+
+        <style>
+            .btn-numero {
+                margin: 1px;
+                padding: 0rem 0.2rem;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="#!"><strong>TecGo Sorteios</strong></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <!--<div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#!">All Products</a></li>
+                                <li><hr class="dropdown-divider" /></li>
+                                <li><a class="dropdown-item" href="#!">Popular Items</a></li>
+                                <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form class="d-flex">
+                        <button class="btn btn-outline-dark" type="submit">
+                            <i class="bi-cart-fill me-1"></i>
+                            Cart
+                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                        </button>
+                    </form>
+                </div>-->
+            </div>
+        </nav>
+        <!-- Product section-->
+        <section class="py-5">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="row gx-4 gx-lg-5 align-items-center">
+                     <!-- A resolução da imagem deve ser 600 x 700 -->
+                    <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="../src/storage/no-image-grande.png" alt="..." /></div>
+                    <div class="col-md-6">
+                        <h1 class="display-5 fw-bolder">Carros envelopados</h1>
+                        <div class="fs-5 mb-5">
+                            <p>R$50,00</p>
+                            <p>Data do sorteio: 26/01/2022, às 19h40</p>
+                        </div>
+                        <p class="lead"><strong>1º Prêmio:</strong> Santana envelopado • Direção hidráulica, doc. ok</p>
+                        <hr>
+                        <p class="lead"><strong>2º Prêmio:</strong> Celta envelopado • 5.000km, trava elétrica, alarme</p>
+                        <hr>
+                        <p class="lead"><strong>3º Prêmio:</strong> Vectra envelopado • Vidros elétricos</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Numbers section-->
+        <section class="py-5 bg-light">
+            <div class="container px-4 px-lg-5 mt-5" style="text-align: center;">
+                <h2><srong>Números</srong></h2>
+            </div>
+            <div style="text-align: center;">
+                <button type="button" class="btn btn-primary mb-1" onClick=''>
+                    <span>Todos</span>
+                    <span><strong>10000</strong></span>
+                </button>
+                <button type="button" class="btn btn-secondary mb-1" onClick=''>
+                    <span>Disponíveis</span>
+                    <span><strong>8500</strong></span>
+                </button>
+                <button type="button" class="btn btn-warning mb-1" onClick=''>
+                    <span>Reservados</span>
+                    <span><strong>1000</strong></span>
+                </button>
+                <button type="button" class="btn btn-success mb-1" onClick=''>
+                    <span>Pagos</span>
+                    <span><strong>500</strong></span>
+                </button>
+            </div>
+            <div class="flex-wrap m-4 d-flex" id="numbers-list" style="margin: 1.5rem 3.5rem !important;">
+                <div class="numbers flex-wrap d-flex">
+                    <label id="00000" class="btn btn-sm btn-secondary btn-numero" data-toggle="tooltip" title="00000 • Disponível">00000</label>
+                    <label id="00001" class="btn-sm btn-success btn-numero" data-toggle="tooltip" data-name="Mauricio" data-phone="(51) 9295" title="00001 • Maurício • Pago<br><hr>(51) 9****-*689">00001</label>
+                    <label id="00002" class="btn-sm btn-success btn-numero" data-toggle="tooltip" data-name="Matheus " data-phone="(21) 9299" title="00002 • Matheus • Pago<br><hr>(12) 9****-*345">00002</label>
+                    <label id="00027" class="btn-sm btn-warning btn-numero" data-toggle="tooltip" data-name="Ronnie W" data-phone="(33) 9647" title="00027 • Ronnie • Reservado<br><hr>(51) 9****-*878">00027</label>
+                </div>
+            </div>
+        </section>
+        <!-- Footer-->
+        <footer class="py-5 bg-dark">
+            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; TecGo Sorteios 2022</p></div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+
+        <script>
+            $(function () {
+                $('[data-toggle="tooltip"]').tooltip({html:true})
+            })
+        </script>
+    </body>
+</html>
