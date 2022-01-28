@@ -1,17 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
+        
         <title>TecGo Sorteios | Rifa Informações</title>
+        
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Bootstrap CSS-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
         <!-- Bootstrap icons-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-        <!-- jQuery-->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles-rifa-informacoes.css" rel="stylesheet" />
 
@@ -20,97 +22,351 @@
                 margin: 1px;
                 padding: 0rem 0.2rem;
             }
+
+            .clicavel{
+                cursor: pointer;
+            }
+
+            #carouselPremio {
+                width: 100%;
+                height: 35rem;
+                background-color: #888888;
+            }
+
+            .carousel .carousel-indicators li {
+                background-color: rgb(218, 218, 218);
+                border: 1px solid rgb(0, 0, 0);
+                width: 60px;
+                height: 7px;
+                margin: 3px;
+            }
+
+            .carousel .carousel-indicators .active {
+               background-color: rgb(24, 24, 24);
+            }
+
+
+            .carousel-inner {
+                height: 100%;
+            }
+
+            .carousel-item {
+                height: 100%;
+            }
+
+            .carousel-item img {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                max-width: 100%;
+                max-height: 100% !important;
+            }
+
+            .badge-premio {
+                top: 1.5rem;
+                right: 0;
+                border-top-right-radius: 0;
+                border-bottom-right-radius: 0;
+            }
         </style>
     </head>
     <body>
-        <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="#!"><strong>TecGo Sorteios</strong></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <!--<div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#!">All Products</a></li>
-                                <li><hr class="dropdown-divider" /></li>
-                                <li><a class="dropdown-item" href="#!">Popular Items</a></li>
-                                <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <form class="d-flex">
-                        <button class="btn btn-outline-dark" type="submit">
-                            <i class="bi-cart-fill me-1"></i>
-                            Cart
-                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                        </button>
-                    </form>
-                </div>-->
-            </div>
-        </nav>
-        <!-- Product section-->
-        <section class="py-5">
-            <div class="container px-4 px-lg-5 my-5">
-                <div class="row gx-4 gx-lg-5 align-items-center">
-                     <!-- A resolução da imagem deve ser 600 x 700 -->
-                    <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="../src/storage/no-image-grande.png" alt="..." /></div>
-                    <div class="col-md-6">
-                        <h1 class="display-5 fw-bolder">Carros envelopados</h1>
-                        <div class="fs-5 mb-5">
-                            <p>R$50,00</p>
-                            <p>Data do sorteio: 26/01/2022, às 19h40</p>
+        <!-- Header-->
+        <header>
+            <!-- Navigation-->
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container px-4 px-lg-5">
+                    <a class="navbar-brand" href="#!"><strong>TecGo Sorteios</strong></a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                    <!--<div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                            <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="#!">All Products</a></li>
+                                    <li><hr class="dropdown-divider" /></li>
+                                    <li><a class="dropdown-item" href="#!">Popular Items</a></li>
+                                    <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <form class="d-flex">
+                            <button class="btn btn-outline-dark" type="submit">
+                                <i class="bi-cart-fill me-1"></i>
+                                Cart
+                                <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                            </button>
+                        </form>
+                    </div>-->
+                </div>
+            </nav>
+        </header>
+        <!-- Main-->
+        <main>
+            <!-- Produto section-->
+            <section class="py-5">
+                <div class="container px-4 px-lg-5 my-5">
+                    <div class="row gx-4 gx-lg-5 align-items-center">
+                        <!-- A resolução da imagem deve ser 600 x 700 -->
+                        <div class="col-md-6">
+                            <!-- <img class="card-img-top mb-5 mb-md-0" src="../src/storage/no-image-grande.png" alt="..." /> -->
+                            <!-- Carousel-->
+                            <div id="carouselPremio" class="carousel slide card-img-top" data-ride="carousel">
+                                <div>
+                                    <ol class="carousel-indicators">
+                                        <li data-target="#carouselPremio" data-slide-to="0" class="active"></li>
+                                        <li data-target="#carouselPremio" data-slide-to="1"></li>
+                                        <li data-target="#carouselPremio" data-slide-to="2"></li>
+                                    </ol>
+                                </div>
+                                <div style="height: 92%;">
+                                    <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <div class="parent d-flex justify-content-center">
+                                            <div class="badge bg-dark text-white position-absolute badge-premio">
+                                                1º Prêmio
+                                            </div>
+                                            <img class="d-block" src="https://http2.mlstatic.com/D_NQ_NP_791143-MLB48465248905_122021-W.jpg?auto=yes&bg=777&fg=555&text=Primeiro Slide" style="max-height: 100em;" alt="Primeiro Slide">
+                                            <!-- <img class="d-block" src="https://w7.pngwing.com/pngs/1017/638/png-transparent-universal-declaration-of-human-rights-origins-of-human-rights-history-full-size-text-area-timeline.png?auto=yes&bg=777&fg=555&text=Primeiro Slide" style="max-height: 100em;" alt="Primeiro Slide"> -->
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="parent d-flex justify-content-center">
+                                            <div class="badge bg-dark text-white position-absolute badge-premio">
+                                                2º Prêmio
+                                            </div>
+                                            <img class="d-block" src="https://i.pinimg.com/originals/3e/72/43/3e72439d84d7ddec1cc2567f2de98abd.jpg?auto=yes&bg=666&fg=444&text=Segundo Slide" alt="Segundo Slide">
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="parent d-flex justify-content-center">
+                                            <div class="badge bg-dark text-white position-absolute badge-premio">
+                                                3º Prêmio
+                                            </div>
+                                            <img class="d-block" src="http://1.bp.blogspot.com/-2r4Oux7dU4E/Vm_qSLljD0I/AAAAAAAACFw/7jDSq8ruDZk/s1600/12345640_448513842002751_4314502881728437431_n.jpg?auto=yes&bg=555&fg=333&text=Terceiro Slide" alt="Terceiro Slide">
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <a class="carousel-control-prev" href="#carouselPremio" role="button" data-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Anterior</span>
+                                    </a>
+                                    <a class="carousel-control-next" href="#carouselPremio" role="button" data-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Próximo</span>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
-                        <p class="lead"><strong>1º Prêmio:</strong> Santana envelopado • Direção hidráulica, doc. ok</p>
-                        <hr>
-                        <p class="lead"><strong>2º Prêmio:</strong> Celta envelopado • 5.000km, trava elétrica, alarme</p>
-                        <hr>
-                        <p class="lead"><strong>3º Prêmio:</strong> Vectra envelopado • Vidros elétricos</p>
+                        <div class="col-md-6">
+                            <h1 class="display-5 fw-bolder">Carros envelopados</h1>
+                            <div class="fs-5 mb-5">
+                                <p>R$50,00</p>
+                                <p>Data do sorteio: 26/01/2022, às 19h40</p>
+                            </div>
+                            <p class="lead"><strong>1º Prêmio:</strong> Santana envelopado • Direção hidráulica, doc. ok</p>
+                            <hr>
+                            <p class="lead"><strong>2º Prêmio:</strong> Celta envelopado • 5.000km, trava elétrica, alarme</p>
+                            <hr>
+                            <p class="lead"><strong>3º Prêmio:</strong> Vectra envelopado • Vidros elétricos</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
-        <!-- Numbers section-->
-        <section class="py-5 bg-light">
-            <div class="container px-4 px-lg-5 mt-5" style="text-align: center;">
-                <h2><srong>Números</srong></h2>
-            </div>
-            <div style="text-align: center;">
-                <button type="button" class="btn btn-primary mb-1" onClick=''>
-                    <span>Todos</span>
-                    <span><strong>10000</strong></span>
-                </button>
-                <button type="button" class="btn btn-secondary mb-1" onClick=''>
-                    <span>Disponíveis</span>
-                    <span><strong>8500</strong></span>
-                </button>
-                <button type="button" class="btn btn-warning mb-1" onClick=''>
-                    <span>Reservados</span>
-                    <span><strong>1000</strong></span>
-                </button>
-                <button type="button" class="btn btn-success mb-1" onClick=''>
-                    <span>Pagos</span>
-                    <span><strong>500</strong></span>
-                </button>
-            </div>
-            <div class="flex-wrap m-4 d-flex" id="numbers-list" style="margin: 1.5rem 3.5rem !important;">
-                <div class="numbers flex-wrap d-flex">
-                    <label id="00000" class="btn btn-sm btn-secondary btn-numero" data-toggle="tooltip" title="00000 • Disponível">00000</label>
-                    <label id="00001" class="btn-sm btn-success btn-numero" data-toggle="tooltip" data-name="Mauricio" data-phone="(51) 9295" title="00001 • Maurício • Pago<br><hr>(51) 9****-*689">00001</label>
-                    <label id="00002" class="btn-sm btn-success btn-numero" data-toggle="tooltip" data-name="Matheus " data-phone="(21) 9299" title="00002 • Matheus • Pago<br><hr>(12) 9****-*345">00002</label>
-                    <label id="00027" class="btn-sm btn-warning btn-numero" data-toggle="tooltip" data-name="Ronnie W" data-phone="(33) 9647" title="00027 • Ronnie • Reservado<br><hr>(51) 9****-*878">00027</label>
+            </section>
+            <!-- Números section-->
+            <section class="py-5 bg-dark">
+                <div class="container px-4 px-lg-5 mt-5" style="text-align: center; color: white;">
+                    <h2><srong>Números</srong></h2>
+                </div>
+                <div style="text-align: center;">
+                    <button type="button" class="btn btn-primary mb-1" onClick=''>
+                        <span>Todos</span>
+                        <span><strong>10000</strong></span>
+                    </button>
+                    <button type="button" class="btn btn-secondary mb-1" onClick=''>
+                        <span>Disponíveis</span>
+                        <span><strong>8500</strong></span>
+                    </button>
+                    <button type="button" class="btn btn-warning mb-1" onClick=''>
+                        <span>Reservados</span>
+                        <span><strong>1000</strong></span>
+                    </button>
+                    <button type="button" class="btn btn-success mb-1" onClick=''>
+                        <span>Pagos</span>
+                        <span><strong>500</strong></span>
+                    </button>
+                    <button type="button" class="btn btn-light mb-1" onClick=''>
+                        <span>Meus números</span>
+                        <span><strong>14</strong></span>
+                    </button>
+                </div>
+                <!-- <div id="divFormPesquisarNumeroPorTelefoneEmail" class="row align-items-center justify-content-center">
+                    <form id="formPesquisarNumeroPorTelefoneEmail" style="width: 25rem;">
+                        <div class="mb-2">
+                            <input type="text" class="form-control" id="formControlPesquisarNumeroPorTelefoneEmail" name="formControlPesquisarNumeroPorTelefoneEmail" min=0 placeholder="Pesquisar pelo telefone (com DDD) ou email"></input>
+                            <div id="erroPesquisarNumeroPorTelefoneEmail" class="divMensagemErroPesquisarNumeroPorTelefoneEmail"></div>
+                        </div>
+                    </form>
+                    <div>
+                        <input type="submit" form="formPesquisarNumeroPorTelefoneEmail" class="btn btn-primary" style="display: none" onclick="fnPesquisarNumeroPorTelefoneEmailFormAction()" value="Pesquisar"><!-- Este input é o submit do form, apesar de estar fora dele. Pode ser colocado em qualquer lugar dentro do DOM -->
+                    <!-- </div>
+                </div> --> -->
+                <div class="flex-wrap m-4 d-flex" id="numbers-list" style="margin: 1.5rem 3.5rem !important;">
+                    <div class="numbers flex-wrap d-flex">
+                        <!-- Button trigger modal -->
+                        <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                            Launch demo modal
+                        </button> -->
+                        <label id="00000" class="btn-sm btn-secondary btn-numero" data-toggle="tooltip" title="00000 • Disponível">00000</label>
+                        <label id="00001" class="btn-sm btn-success btn-numero" data-toggle="tooltip" data-name="Mauricio" data-phone="(51) 9295" title="00001 • Maurício • Pago<br><hr>(51) 9****-*689">00001</label>
+                        <label id="00002" class="btn-sm btn-success btn-numero" data-toggle="tooltip" data-name="Matheus " data-phone="(21) 9299" title="00002 • Matheus • Pago<br><hr>(12) 9****-*345">00002</label>
+                        <label id="00027" class="btn-sm btn-warning btn-numero" data-toggle="tooltip" data-name="Ronnie W" data-phone="(33) 9647" title="00027 • Ronnie • Reservado<br><hr>(51) 9****-*878">00027</label>
+                    </div>
+                </div>
+            </section>
+            <!-- Formas de pagamento section-->
+            <section class="py-5" style="background-color: khaki;">
+                <div class="container px-4 px-lg-5 mt-5" style="text-align: center;">
+                    <h2><srong>Formas de Pagamento</srong></h2>
+                </div>
+                <div style="text-align: center;">
+                    <div class="container px-4 px-lg-5 mt-5">
+                        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                            <div id="forma-pag-1" class="col mb-5">
+                                <div class="card h-100 clicavel" onclick="copyToClipboard('pChavePixCopiada')" onmouseleave="changePChavePixCopiada('pChavePixCopiada')">
+                                    <!-- Logo PIX image--> <!-- A resolução da imagem deve ser 450 x 300 -->
+                                    <div class="row align-items-center h-50">
+                                        <img class="card-img-top" src="../src/storage/pix-logo.png" alt="..." />
+                                    </div>
+                                    <div style="background-color: rgb(0, 131, 120); color: rgb(255, 255, 255);">
+                                        <div class="card-body p-4">
+                                            <div class="text-center">
+                                                <h5 class="fw-bolder">PIX</h5>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                            <div>
+                                                <p><strong>Chave CPF: </strong><br><span id="chavePix" value="Valor aqui">34534283667</span></p>
+                                                <p id="pChavePixCopiada" style="background-color: rgb(255, 255, 255); color: rgb(0, 131, 120); border-radius: 5px;">Clique para copiar</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="forma-pag-2" class="col mb-5">
+                                <div class="card h-100 clicavel">
+                                    <!-- Logo cartão de crédito image--> <!-- A resolução da imagem deve ser 450 x 300 -->
+                                    <div class="row align-items-center h-50">
+                                        <img class="card-img-top" src="../src/storage/cartao.png" alt="..." />
+                                    </div>
+                                    <div style="background-color: rgb(46, 139, 108); color: rgb(255, 255, 255);">
+                                        <div class="card-body p-4">
+                                            <div class="text-center">
+                                                <h5 class="fw-bolder">Cartão de Crédito</h5>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                            <div>
+                                                <p><strong>Chave CPF: </strong><br><span id="chavePix" value="Valor aqui">34534283667</span></p>
+                                                <p id="pChavePixCopiada" style="background-color: rgb(255, 255, 255); color: rgb(46, 139, 108); border-radius: 5px;">Clique para copiar</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="forma-pag-3" class="col mb-5">
+                                <div class="card h-100 clicavel">
+                                    <!-- Logo cartão de débito image--> <!-- A resolução da imagem deve ser 450 x 300 -->
+                                    <div class="row align-items-center h-50">
+                                        <img class="card-img-top" src="../src/storage/cartao.png" alt="..." />
+                                    </div>
+                                    <div style="background-color: teal; color: rgb(255, 255, 255);">
+                                        <div class="card-body p-4">
+                                            <div class="text-center">
+                                                <h5 class="fw-bolder">Cartão de Débito</h5>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                            <div>
+                                                <p><strong>Chave CPF: </strong><br><span id="chavePix" value="Valor aqui">34534283667</span></p>
+                                                <p id="pChavePixCopiada" style="background-color: rgb(255, 255, 255); color: teal; border-radius: 5px;">Clique para copiar</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="forma-pag-4" class="col mb-5">
+                                <div class="card h-100 clicavel">
+                                    <!-- Logo boleto image--> <!-- A resolução da imagem deve ser 450 x 300 -->
+                                    <div class="row align-items-center h-50">
+                                        <img class="card-img-top" src="../src/storage/boleto.png" alt="..." />
+                                    </div>
+                                    <div style="background-color: slategrey; color: rgb(255, 255, 255);">
+                                        <div class="card-body p-4">
+                                            <div class="text-center">
+                                                <h5 class="fw-bolder">Boleto</h5>
+                                            </div>
+                                        </div>
+                                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                            <div>
+                                                <p><strong>Chave CPF: </strong><br><span id="chavePix" value="Valor aqui">34534283667</span></p>
+                                                <p id="pChavePixCopiada" style="background-color: rgb(255, 255, 255); color: slategrey; border-radius: 5px;">Clique para copiar</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Comprovante de pagamento section-->
+            <section class="py-5" style="background-color: rgb(255, 255, 255);">
+                <div class="container px-4 px-lg-5 mt-5" style="text-align: center;">
+                    <h2><srong>Comprovante de Pagamento</srong></h2>
+                </div>
+                <div>
+                    <div class="container px-4 px-lg-5 mt-5 text-center">
+                        <p>Após o pagamento, envie-nos o comprovante via WhatsApp.</p>
+                        <button type="button" class="btn btn-primary mb-1" onClick='enviarComprovante()'>Enviar comprovante</button>
+                    </div>
+                </div>
+            </section>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                    ...
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
                 </div>
             </div>
-        </section>
+        </main>
         <!-- Footer-->
         <footer class="py-5 bg-dark">
             <div class="container"><p class="m-0 text-center text-white">Copyright &copy; TecGo Sorteios 2022</p></div>
         </footer>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+        <!-- jQuery-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <!-- Bootstrap JS-->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <!-- Bootstrap JS plugins with Popper-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
 
@@ -118,6 +374,32 @@
             $(function () {
                 $('[data-toggle="tooltip"]').tooltip({html:true})
             })
+
+            function copyToClipboard(pChavePixCopiada) {
+                var copyText = document.getElementById("chavePix");
+                var textArea = document.createElement("textarea");
+                textArea.value = copyText.textContent;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand("Copy");
+                textArea.remove();
+
+                var pChavePixCopiada = document.getElementById(pChavePixCopiada);
+                pChavePixCopiada.textContent = 'Copiado!';
+            }
+
+            function changePChavePixCopiada(pChavePixCopiada) {
+                var pChavePixCopiada = document.getElementById(pChavePixCopiada);
+                pChavePixCopiada.textContent = 'Clique para copiar';
+            }
+
+            function enviarComprovante() {
+                var telefone = "553284915355";
+                var mensagem = "Te enviarei o comprovante do pagamento da rifa 'Carros envelopados'";
+                
+                var link = 'https://wa.me/' + telefone + '?text=' + mensagem;
+                window.open(link);
+            }
         </script>
     </body>
 </html>
