@@ -27,15 +27,15 @@
                 cursor: pointer;
             }
 
+            .carousel-control-icon {
+                background-color: rgb(44, 44, 44);
+                border-radius: 10px;
+            }
+
             #carouselPremio {
                 width: 100%;
                 height: 35rem;
                 background-color: #888888;
-            }
-
-            .carousel-control-icon {
-                background-color: rgb(44, 44, 44);
-                border-radius: 10px;
             }
 
             .carousel .carousel-indicators li {
@@ -84,6 +84,19 @@
                 background-color: rgb(44, 44, 44);
                 color: rgb(255, 255, 255);
             }
+
+            .div-card-img {
+                height: 149px;
+                border-radius: 3px 3px 0px 0px;
+                background-color: #888888;
+            }
+
+            .card-img-top {
+                max-width: 100%;
+                max-height: 100%;
+                width: auto;
+                height: auto;
+            }
         </style>
     </head>
     <body>
@@ -127,7 +140,6 @@
                     <div class="row gx-4 gx-lg-5 align-items-center">
                         <!-- A resolução da imagem deve ser 600 x 700 -->
                         <div class="col-md-6">
-                            <!-- <img class="card-img-top mb-5 mb-md-0" src="../src/storage/no-image-grande.png" alt="..." /> -->
                             <!-- Carousel-->
                             <div id="carouselPremio" class="carousel slide card-img-top" data-ride="carousel">
                                 <div>
@@ -139,31 +151,30 @@
                                 </div>
                                 <div style="height: 92%;">
                                     <div class="carousel-inner">
-                                    <div class="carousel-item active">
-                                        <div class="parent d-flex justify-content-center">
-                                            <div class="badge bg-dark text-white position-absolute badge-premio">
-                                                1º Prêmio
+                                        <div class="carousel-item active">
+                                            <div class="parent d-flex justify-content-center">
+                                                <div class="badge bg-dark text-white position-absolute badge-premio">
+                                                    1º Prêmio
+                                                </div>
+                                                <img class="d-block" src="https://http2.mlstatic.com/D_NQ_NP_791143-MLB48465248905_122021-W.jpg?auto=yes&bg=777&fg=555&text=Primeiro Slide" style="max-height: 100em;" alt="Primeiro Slide">
                                             </div>
-                                            <img class="d-block" src="https://http2.mlstatic.com/D_NQ_NP_791143-MLB48465248905_122021-W.jpg?auto=yes&bg=777&fg=555&text=Primeiro Slide" style="max-height: 100em;" alt="Primeiro Slide">
-                                            <!-- <img class="d-block" src="https://w7.pngwing.com/pngs/1017/638/png-transparent-universal-declaration-of-human-rights-origins-of-human-rights-history-full-size-text-area-timeline.png?auto=yes&bg=777&fg=555&text=Primeiro Slide" style="max-height: 100em;" alt="Primeiro Slide"> -->
                                         </div>
-                                    </div>
-                                    <div class="carousel-item">
-                                        <div class="parent d-flex justify-content-center">
-                                            <div class="badge bg-dark text-white position-absolute badge-premio">
-                                                2º Prêmio
+                                        <div class="carousel-item">
+                                            <div class="parent d-flex justify-content-center">
+                                                <div class="badge bg-dark text-white position-absolute badge-premio">
+                                                    2º Prêmio
+                                                </div>
+                                                <img class="d-block" src="https://i.pinimg.com/originals/3e/72/43/3e72439d84d7ddec1cc2567f2de98abd.jpg?auto=yes&bg=666&fg=444&text=Segundo Slide" alt="Segundo Slide">
                                             </div>
-                                            <img class="d-block" src="https://i.pinimg.com/originals/3e/72/43/3e72439d84d7ddec1cc2567f2de98abd.jpg?auto=yes&bg=666&fg=444&text=Segundo Slide" alt="Segundo Slide">
                                         </div>
-                                    </div>
-                                    <div class="carousel-item">
-                                        <div class="parent d-flex justify-content-center">
-                                            <div class="badge bg-dark text-white position-absolute badge-premio">
-                                                3º Prêmio
+                                        <div class="carousel-item">
+                                            <div class="parent d-flex justify-content-center">
+                                                <div class="badge bg-dark text-white position-absolute badge-premio">
+                                                    3º Prêmio
+                                                </div>
+                                                <img class="d-block" src="http://1.bp.blogspot.com/-2r4Oux7dU4E/Vm_qSLljD0I/AAAAAAAACFw/7jDSq8ruDZk/s1600/12345640_448513842002751_4314502881728437431_n.jpg?auto=yes&bg=555&fg=333&text=Terceiro Slide" alt="Terceiro Slide">
                                             </div>
-                                            <img class="d-block" src="http://1.bp.blogspot.com/-2r4Oux7dU4E/Vm_qSLljD0I/AAAAAAAACFw/7jDSq8ruDZk/s1600/12345640_448513842002751_4314502881728437431_n.jpg?auto=yes&bg=555&fg=333&text=Terceiro Slide" alt="Terceiro Slide">
                                         </div>
-                                    </div>
                                     </div>
                                     <a class="carousel-control-prev" href="#carouselPremio" role="button" data-slide="prev">
                                         <span class="carousel-control-prev-icon carousel-control-icon" aria-hidden="true"></span>
@@ -249,7 +260,7 @@
                             <div id="forma-pag-1" class="col mb-5">
                                 <div id="forma-pag-pix" class="card h-100 clicavel align-items-center" onclick="copyToClipboard('pChavePixCopiada')" onmouseleave="changePChavePixCopiada('pChavePixCopiada')">
                                     <!-- Logo PIX image--> <!-- A resolução da imagem deve ser 450 x 300 -->
-                                    <div class="row align-items-center w-100 h-50">
+                                    <div class="div-card-img d-flex justify-content-center align-items-center">
                                         <img class="card-img-top" src="../src/storage/pix-logo.png" alt="..." />
                                     </div>
                                     <div class="row align-items-center w-100" style="background-color: rgb(0, 131, 120); color: rgb(255, 255, 255);">
@@ -270,7 +281,7 @@
                             <div id="forma-pag-2" class="col mb-5">
                                 <div class="card h-100 clicavel align-items-center">
                                     <!-- Logo cartão de crédito image--> <!-- A resolução da imagem deve ser 450 x 300 -->
-                                    <div class="row align-items-center w-100 h-50">
+                                    <div class="div-card-img d-flex justify-content-center align-items-center">
                                         <img class="card-img-top" src="../src/storage/cartao.png" alt="..." />
                                     </div>
                                     <div class="row align-items-center w-100" style="background-color: rgb(46, 139, 108); color: rgb(255, 255, 255);">
@@ -291,7 +302,7 @@
                             <div id="forma-pag-3" class="col mb-5">
                                 <div class="card h-100 clicavel align-items-center">
                                     <!-- Logo cartão de débito image--> <!-- A resolução da imagem deve ser 450 x 300 -->
-                                    <div class="row align-items-center w-100 h-50">
+                                    <div class="div-card-img d-flex justify-content-center align-items-center">
                                         <img class="card-img-top" src="../src/storage/cartao.png" alt="..." />
                                     </div>
                                     <div class="row align-items-center w-100" style="background-color: teal; color: rgb(255, 255, 255);">
@@ -312,7 +323,7 @@
                             <div id="forma-pag-4" class="col mb-5">
                                 <div class="card h-100 clicavel align-items-center">
                                     <!-- Logo boleto image--> <!-- A resolução da imagem deve ser 450 x 300 -->
-                                    <div class="row align-items-center w-100 h-50">
+                                    <div class="div-card-img d-flex justify-content-center align-items-center">
                                         <img class="card-img-top" src="../src/storage/boleto.png" alt="..." />
                                     </div>
                                     <div class="row align-items-center w-100" style="background-color: slategrey; color: rgb(255, 255, 255);">
