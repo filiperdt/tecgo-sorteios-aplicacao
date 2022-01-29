@@ -45,7 +45,6 @@
                background-color: rgb(24, 24, 24);
             }
 
-
             .carousel-inner {
                 height: 100%;
             }
@@ -68,6 +67,17 @@
                 right: 0;
                 border-top-right-radius: 0;
                 border-bottom-right-radius: 0;
+            }
+
+            #pChavePixCopiada {
+                background-color: rgb(255, 255, 255);
+                color: rgb(0, 131, 120);
+                border-radius: 5px;
+            }
+            
+            #forma-pag-pix:hover #pChavePixCopiada {
+                background-color: rgb(44, 44, 44);
+                color: rgb(255, 255, 255);
             }
         </style>
     </head>
@@ -216,11 +226,9 @@
                 </div> --> -->
                 <div class="flex-wrap m-4 d-flex" id="numbers-list" style="margin: 1.5rem 3.5rem !important;">
                     <div class="numbers flex-wrap d-flex">
-                        <!-- Button trigger modal -->
-                        <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                            Launch demo modal
-                        </button> -->
-                        <label id="00000" class="btn-sm btn-secondary btn-numero" data-toggle="tooltip" title="00000 • Disponível">00000</label>
+                        <span data-toggle="modal" data-target="#modalNumeroDisponivel">
+                            <label id="00000" class="btn-sm btn-secondary btn-numero" data-toggle="tooltip" title="00000 • Disponível">00000</label>
+                        </span>
                         <label id="00001" class="btn-sm btn-success btn-numero" data-toggle="tooltip" data-name="Mauricio" data-phone="(51) 9295" title="00001 • Maurício • Pago<br><hr>(51) 9****-*689">00001</label>
                         <label id="00002" class="btn-sm btn-success btn-numero" data-toggle="tooltip" data-name="Matheus " data-phone="(21) 9299" title="00002 • Matheus • Pago<br><hr>(12) 9****-*345">00002</label>
                         <label id="00027" class="btn-sm btn-warning btn-numero" data-toggle="tooltip" data-name="Ronnie W" data-phone="(33) 9647" title="00027 • Ronnie • Reservado<br><hr>(51) 9****-*878">00027</label>
@@ -236,12 +244,12 @@
                     <div class="container px-4 px-lg-5 mt-5">
                         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                             <div id="forma-pag-1" class="col mb-5">
-                                <div class="card h-100 clicavel" onclick="copyToClipboard('pChavePixCopiada')" onmouseleave="changePChavePixCopiada('pChavePixCopiada')">
+                                <div id="forma-pag-pix" class="card h-100 clicavel align-items-center" onclick="copyToClipboard('pChavePixCopiada')" onmouseleave="changePChavePixCopiada('pChavePixCopiada')">
                                     <!-- Logo PIX image--> <!-- A resolução da imagem deve ser 450 x 300 -->
-                                    <div class="row align-items-center h-50">
+                                    <div class="row align-items-center w-100 h-50">
                                         <img class="card-img-top" src="../src/storage/pix-logo.png" alt="..." />
                                     </div>
-                                    <div style="background-color: rgb(0, 131, 120); color: rgb(255, 255, 255);">
+                                    <div class="row align-items-center w-100" style="background-color: rgb(0, 131, 120); color: rgb(255, 255, 255);">
                                         <div class="card-body p-4">
                                             <div class="text-center">
                                                 <h5 class="fw-bolder">PIX</h5>
@@ -250,19 +258,19 @@
                                         <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                             <div>
                                                 <p><strong>Chave CPF: </strong><br><span id="chavePix" value="Valor aqui">34534283667</span></p>
-                                                <p id="pChavePixCopiada" style="background-color: rgb(255, 255, 255); color: rgb(0, 131, 120); border-radius: 5px;">Clique para copiar</p>
+                                                <p id="pChavePixCopiada">Clique para copiar</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div id="forma-pag-2" class="col mb-5">
-                                <div class="card h-100 clicavel">
+                                <div class="card h-100 clicavel align-items-center">
                                     <!-- Logo cartão de crédito image--> <!-- A resolução da imagem deve ser 450 x 300 -->
-                                    <div class="row align-items-center h-50">
+                                    <div class="row align-items-center w-100 h-50">
                                         <img class="card-img-top" src="../src/storage/cartao.png" alt="..." />
                                     </div>
-                                    <div style="background-color: rgb(46, 139, 108); color: rgb(255, 255, 255);">
+                                    <div class="row align-items-center w-100" style="background-color: rgb(46, 139, 108); color: rgb(255, 255, 255);">
                                         <div class="card-body p-4">
                                             <div class="text-center">
                                                 <h5 class="fw-bolder">Cartão de Crédito</h5>
@@ -278,12 +286,12 @@
                                 </div>
                             </div>
                             <div id="forma-pag-3" class="col mb-5">
-                                <div class="card h-100 clicavel">
+                                <div class="card h-100 clicavel align-items-center">
                                     <!-- Logo cartão de débito image--> <!-- A resolução da imagem deve ser 450 x 300 -->
-                                    <div class="row align-items-center h-50">
+                                    <div class="row align-items-center w-100 h-50">
                                         <img class="card-img-top" src="../src/storage/cartao.png" alt="..." />
                                     </div>
-                                    <div style="background-color: teal; color: rgb(255, 255, 255);">
+                                    <div class="row align-items-center w-100" style="background-color: teal; color: rgb(255, 255, 255);">
                                         <div class="card-body p-4">
                                             <div class="text-center">
                                                 <h5 class="fw-bolder">Cartão de Débito</h5>
@@ -299,12 +307,12 @@
                                 </div>
                             </div>
                             <div id="forma-pag-4" class="col mb-5">
-                                <div class="card h-100 clicavel">
+                                <div class="card h-100 clicavel align-items-center">
                                     <!-- Logo boleto image--> <!-- A resolução da imagem deve ser 450 x 300 -->
-                                    <div class="row align-items-center h-50">
+                                    <div class="row align-items-center w-100 h-50">
                                         <img class="card-img-top" src="../src/storage/boleto.png" alt="..." />
                                     </div>
-                                    <div style="background-color: slategrey; color: rgb(255, 255, 255);">
+                                    <div class="row align-items-center w-100" style="background-color: slategrey; color: rgb(255, 255, 255);">
                                         <div class="card-body p-4">
                                             <div class="text-center">
                                                 <h5 class="fw-bolder">Boleto</h5>
@@ -335,22 +343,26 @@
                     </div>
                 </div>
             </section>
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            
+            <!-- Número disponível modal-->
+            <div class="modal fade" id="modalNumeroDisponivel" tabindex="-1" role="dialog" aria-labelledby="modalNumeroDisponivelLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <h5 class="modal-title" id="modalNumeroDisponivelLabel">Reservar cupom</h5>
+                    <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
-                    </button>
+                    </button> -->
                     </div>
                     <div class="modal-body">
-                    ...
+                        <p>Número: <span>00000</span></p>
+                        <p>Status: <span>Disponível</span></p>
+                        <br>
+                        <p style="color: rgb(134, 0, 0);">Se este cupom não for pago em até <span>1 dia</span>, esta reserva será cancelada.</p>
                     </div>
                     <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary">Reservar</button>
                     </div>
                 </div>
                 </div>
