@@ -7,3 +7,11 @@
 .menu-principal {
     float: right;
 }
+
+table th, td{
+	text-align: center;
+}
+
+.td-texto-esquerda {
+    text-align: left;
+}
