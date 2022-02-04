@@ -1,36 +1,24 @@
 {
-    "title": "Shop Homepage",
-    "name": "startbootstrap-shop-homepage",
-    "version": "5.0.4",
+    "title": "TecGo Sorteios",
+    "name": "tecgo-sorteios-aplicacao",
+    "version": "1.0.0",
     "scripts": {
-        "build": "npm run clean && npm run build:pug && npm run build:scss && npm run build:scripts && npm run build:assets",
-        "build:assets": "node scripts/build-assets.js",
-        "build:pug": "node scripts/build-pug.js",
-        "build:scripts": "node scripts/build-scripts.js",
-        "build:scss": "node scripts/build-scss.js",
-        "clean": "node scripts/clean.js",
-        "start": "npm run build && node scripts/start.js",
-        "start:debug": "npm run build && node scripts/start-debug.js"
+        "test": "test",
+        "start": "webpack --watch --config dev.webpack.config.js"
     },
-    "description": "A shop homepage HTML template built with Bootstrap",
+    "description": "Site para compra de rifas de carros online",
     "keywords": [
-        "css",
-        "sass",
-        "html",
-        "responsive",
-        "theme",
-        "template"
+        "rifa",
+        "online",
+        "carro",
+        "compra"
     ],
-    "homepage": "https://startbootstrap.com/template/shop-homepage",
+    "homepage": "https://github.com/filiperdt/tecgo-sorteios-aplicacao",
     "bugs": {
-        "url": "https://github.com/StartBootstrap/startbootstrap-shop-homepage/issues",
-        "email": "feedback@startbootstrap.com"
+        "url": "https://github.com/filiperdt/tecgo-sorteios-aplicacao/issues"
     },
-    "license": "MIT",
-    "author": "Start Bootstrap",
-    "contributors": [
-        "David Miller (https://davidmiller.io/)"
-    ],
+    "license": "ISC",
+    "author": "Rúben Oliveira",
     "repository": {
         "type": "git",
         "url": "https://github.com/StartBootstrap/startbootstrap-shop-homepage.git"
@@ -48,6 +36,8 @@
         "pug": "3.0.2",
         "sass": "1.43.2",
         "shelljs": "0.8.4",
-        "upath": "2.0.1"
+        "upath": "2.0.1",
+        "webpack": "^5.40.0",
+        "webpack-cli": "^4.7.2"
     }
 }
