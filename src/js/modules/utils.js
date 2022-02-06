@@ -2,7 +2,7 @@ var indexTableList = 1;
 
 export const main = document.querySelector("#root");
 
-export const path = 'http://localhost:8080/seguradora';
+export const path = 'http://localhost:8080/tecgo-sorteios';
 
 export const fnShowIndexTableList = () => {
     return indexTableList++;
@@ -40,33 +40,4 @@ export const fnRemovePrimeirosElementosComIdsRepetidos = id => {
             ids[n].parentElement.removeChild(ids[n]);
         }
     }
-}
-
-export const fnFecharDivDeExibicaoCliente = () => {
-    document.getElementById("divExibirCliente").style.display = "none";
-}
-
-export const fnFecharDivDeExibicaoApolice = () => {
-    document.getElementById("divExibirApolice").style.display = "none";
-}
-
-export const fnFormatarMoeda = valor => {
-    valor = valor + '';
-    valor = valor.replace(/[\D]*/g, '');
-    valor = valor + '';
-    valor = valor.replace(/([0-9]{1})([0-9]{2})$/g, "$1,$2");
-
-    let tamanhoValor = valor.length;
-    
-    if(tamanhoValor <= 2)
-        valor = '0,00';
-    else if(tamanhoValor >= 3 && tamanhoValor <= 6)
-        valor = valor.replace(/([\d]{1})([\d]{2})$/g, "$1,$2");
-    
-    if(valor.length > 6)
-        valor = valor.replace(/([0-9]{3})([0-9]{3}),([0-9]{2}$)/g, ".$1.$2,$3");
-
-    if(valor == 'NaN') valor = '';
-
-    return "R$" + valor;
 }

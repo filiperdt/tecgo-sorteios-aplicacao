@@ -11,20 +11,29 @@ var pathRifa = path + '/rifas';
 
 // INDEX
 const fnIndex = () => {
-    fnListCardRifa();
+    fnListRifa();
 };
 
-const fnListCardRifa = () =>
+const fnListRifa = () =>
     fetch(pathRifa, optionsRifa.optionsListRifas)
     .then(data => data.json())
     .then(rifas => {
-        const tableListTodasRifas = listCardRifa(rifas);
-        fnMontarIndex(tableListTodasRifas);
+        const tableListTodosRifas = listRifa(rifas);
+        fnListApolice(tableListTodosRifas);
     })
-    .catch(e => console.log(`Ocorreu um erro. fnListCardRifa: ${e}`));
+    .catch(e => console.log(`Ocorreu um erro. fnListRifa: ${e}`));
 
-const fnMontarIndex = (tableListTodasRifas) => {
-    main.innerHTML = index(tableListTodasRifas);
+const fnListApolice = tableListTodosRifas =>
+fetch(pathApolice, optionsApolice.optionsListApolices)
+.then(data => data.json())
+.then(apolices => {
+    const tableListTodasApolices = listApolice(apolices);
+    fnMontarIndex(tableListTodosRifas, tableListTodasApolices);
+})
+.catch(e => console.log(`Ocorreu um erro. fnListApolice: ${e}`));
+
+const fnMontarIndex = (tableListTodosRifas, tableListTodasApolices) => {
+    main.innerHTML = index(tableListTodosRifas, tableListTodasApolices);
 };
 
 // CRUD CLIENTE
@@ -82,12 +91,12 @@ const fnRecarregarListRifa = () =>
     fetch(pathRifa, optionsRifa.optionsListRifas)
     .then(data => data.json())
     .then(rifas => {
-        let divTodasRifas = document.getElementById("todasRifas");
+        let divTodosRifas = document.getElementById("todosRifas");
         
         fnFecharDivDeExibicaoRifa();
 
-        divTodasRifas.innerHTML = '';
-        divTodasRifas.innerHTML = listRifa(rifas);
+        divTodosRifas.innerHTML = '';
+        divTodosRifas.innerHTML = listRifa(rifas);
     })
     .catch(e => console.log(`Ocorreu um erro. fnRecarregarListRifa: ${e}`));
 

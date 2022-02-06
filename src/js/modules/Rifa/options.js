@@ -8,11 +8,11 @@ export const optionsPadraoComHeaders = {
         'Content-type': 'application/json; charset=UTF-8'
     }
 };
-export const optionsListClientes = {
+export const optionsListRifas = {
     ...optionsPadrao,
     method: 'GET'
 };
-export const optionsCreateCliente = body => (
+export const optionsCreateRifa = body => (
     {
         ...optionsPadraoComHeaders,
         method: 'POST',
@@ -21,11 +21,11 @@ export const optionsCreateCliente = body => (
         })
     }
 );
-export const optionsReadCliente = {
+export const optionsReadRifa = {
     ...optionsPadrao,
     method: 'GET'
 };
-export const optionsUpdateCliente = body => (
+export const optionsUpdateRifa = body => (
     {
         ...optionsPadraoComHeaders,
         method: 'PUT',
@@ -34,7 +34,7 @@ export const optionsUpdateCliente = body => (
         })
     }
 );
-export const optionsDeleteCliente = {
+export const optionsDeleteRifa = {
     ...optionsPadrao,
     method: 'DELETE'
 };

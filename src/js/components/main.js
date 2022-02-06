@@ -1,23 +1,9 @@
-const gerarTemplate = (tableListTodosClientes, tableListTodasApolices) => 
+const gerarTemplate = (tableListTodasRifas) => 
     `
-        <div class="container mb-3">
-            <div id="titulo" class="row">
-                <h1>Seguradora de veículos</h1>
-            </div>
-            <div id="divExibirCliente" class="row">
-            </div>
-            <div id="todosClientes" class="row">
-                ${tableListTodosClientes}
-            </div>
-            <div id="divExibirApolice" class="row">
-            </div>
-            <div id="todasApolices" class="row mt-3">
-                ${tableListTodasApolices}
-            </div>
-        </div>
+        ${tableListTodasRifas}
     `;
 
-export default (tableListTodosClientes, tableListTodasApolices) => {
-    return gerarTemplate(tableListTodosClientes, tableListTodasApolices);
+export default (tableListTodasRifas) => {
+    return gerarTemplate(tableListTodasRifas);
 
 }
