@@ -38,3 +38,7 @@ export const optionsDeleteRifa = {
     ...optionsPadrao,
     method: 'DELETE'
 };
+export const optionsGetPadrao = {
+    ...optionsPadrao,
+    method: 'GET'
+};

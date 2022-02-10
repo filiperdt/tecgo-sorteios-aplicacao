@@ -21,7 +21,7 @@ const renderCard = rifas => rifas.forEach(rifa => {
                     </div>
                     <!-- Product actions-->
                     <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Escolher número</a></div>
+                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="src/item.html?id=${rifa.id}">Escolher número</a></div>
                     </div>
                 </div>
             </div>
@@ -30,6 +30,9 @@ const renderCard = rifas => rifas.forEach(rifa => {
 
 export default rifas => {
     output = '';
+
+    // Ordem decrescente. Do mais novo para o mais antigo
+    rifas.sort((a, b) => a.dataCriacao > b.dataCriacao ? -1 : a.dataCriacao === b.dataCriacao ? 0 : 1);
 
     output += `
         <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
