@@ -26,17 +26,27 @@ const fnReadRifaIndex = id => {
 };
 
 const fnListPremio = rifa => {
-    const url = pathRifa + '/find/' + rifa.id;
+    const url = pathRifa + '/find-premios/' + rifa.id;
     fetch(url, optionsRifa.optionsGetPadrao)
     .then(data => data.json())
     .then(premios => {
-        fnMontarIndex(rifa, premios);
+        fnListNumero(rifa, premios);
     })
     .catch(e => console.log(`Ocorreu um erro. fnListPremio: ${e}`));
 }
 
-const fnMontarIndex = (rifa, premios) => {
-    main.innerHTML = index(rifa, premios);
+const fnListNumero = (rifa, premios) => {
+    const url = pathRifa + '/find-numeros/' + rifa.id;
+    fetch(url, optionsRifa.optionsGetPadrao)
+    .then(data => data.json())
+    .then(numeros => {
+        fnMontarIndex(rifa, premios, numeros);
+    })
+    .catch(e => console.log(`Ocorreu um erro. fnListNumero: ${e}`));
+}
+
+const fnMontarIndex = (rifa, premios, numeros) => {
+    main.innerHTML = index(rifa, premios, numeros);
 };
 
 // // CRUD CLIENTE

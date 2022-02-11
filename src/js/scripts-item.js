@@ -1,6 +1,9 @@
 $(function () {
-    $('[data-toggle="tooltip"]').tooltip({html:true})
+    $('[data-bs-toggle="tooltip"]').tooltip({html:true});
 })
+
+// // Initialize tooltips
+// [...document.querySelectorAll('[data-bs-toggle="tooltip"]')].forEach(el => new bootstrap.Tooltip(el));
 
 function copyToClipboard(pChavePixCopiada) {
     var copyText = document.getElementById("chavePix");

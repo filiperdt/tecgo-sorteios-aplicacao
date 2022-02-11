@@ -1,6 +1,46 @@
 let output = '';
 let cont = 1;
 
+const gerarSectionProduto = (rifa, premios) => {
+    const dataHorarioSorteio = rifa.dataSorteio.split('T');
+
+    const dataSorteio = dataHorarioSorteio[0];
+    const arrayDataHorarioSorteio = dataHorarioSorteio[1].split(':');
+    
+    const horaSorteio = arrayDataHorarioSorteio[0];
+    const minutosSorteio = arrayDataHorarioSorteio[1];
+
+    output += `
+        <!-- Produto section-->
+        <section class="py-5">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="row gx-4 gx-lg-5 align-items-center">
+                    <!-- A resolução da imagem deve ser 600 x 700 -->
+                    <div class="col-md-6">
+                        `;
+
+                        gerarCarrossel(premios);
+                        
+                        output += `
+                    </div>
+                    <div class="col-md-6">
+                        <h1 class="display-5 fw-bolder">${rifa.titulo}</h1>
+                        <div class="fs-5 mb-5">
+                            <p>R$${rifa.valor}</p>
+                            <p>Data do sorteio: ${dataSorteio}, às ${horaSorteio}h${minutosSorteio}</p>
+                        </div>
+                        `;
+
+                        listarPremios(premios);
+
+                        output += `
+                    </div>
+                </div>
+            </div>
+        </section>
+    `;
+}
+
 const gerarCarrossel = premios => {
     output += `
         <div id="carouselPremio" class="carousel slide card-img-top" data-bs-ride="carousel">
@@ -125,44 +165,8 @@ const listarPremios = premios => {
     }
 }
 
-const gerarTemplate = (rifa, premios) => {
-    const dataHorarioSorteio = rifa.dataSorteio.split('T');
-
-    const dataSorteio = dataHorarioSorteio[0];
-    const arrayDataHorarioSorteio = dataHorarioSorteio[1].split(':');
-    
-    const horaSorteio = arrayDataHorarioSorteio[0];
-    const minutosSorteio = arrayDataHorarioSorteio[1];
-
+const gerarSectionNumero = numeros => {
     output += `
-        <!-- Produto section-->
-        <section class="py-5">
-            <div class="container px-4 px-lg-5 my-5">
-                <div class="row gx-4 gx-lg-5 align-items-center">
-                    <!-- A resolução da imagem deve ser 600 x 700 -->
-                    <div class="col-md-6">
-                        `;
-
-                        gerarCarrossel(premios);
-                        
-                        output += `
-                    </div>
-                    <div class="col-md-6">
-                        <h1 class="display-5 fw-bolder">${rifa.titulo}</h1>
-                        <div class="fs-5 mb-5">
-                            <p>R$${rifa.valor}</p>
-                            <p>Data do sorteio: ${dataSorteio}, às ${horaSorteio}h${minutosSorteio}</p>
-                        </div>
-                        `;
-
-                        listarPremios(premios);
-
-                        output += `
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Números section-->
         <section class="py-5 bg-dark">
             <div class="container px-4 px-lg-5 mt-5" style="text-align: center; color: white;">
                 <h2><srong>Números</srong></h2>
@@ -202,23 +206,26 @@ const gerarTemplate = (rifa, premios) => {
             </div> --> -->
             <div class="flex-wrap m-4 d-flex" id="numbers-list" style="margin: 1.5rem 3.5rem !important;">
                 <div class="numbers flex-wrap d-flex">
-                    <span data-toggle="modal" data-target="#modalNumeroDisponivel">
-                        <label id="00000" class="btn-sm btn-secondary btn-numero" data-toggle="tooltip" title="00000 • Disponível">00000</label>
+                    <span data-bs-toggle="modal" data-bs-target="#modalNumeroDisponivel">
+                        <button type="button" id="00000" class="btn-sm btn-secondary btn-numero" data-bs-toggle="tooltip" title="00000 • Disponível">00000</button>
                     </span>
-                    <label id="00001" class="btn-sm btn-success btn-numero" data-toggle="tooltip" data-name="Mauricio" data-phone="(51) 9295" title="00001 • Maurício • Pago<br><hr>(51) 9****-*689">00001</label>
-                    <label id="00002" class="btn-sm btn-success btn-numero" data-toggle="tooltip" data-name="Matheus " data-phone="(21) 9299" title="00002 • Matheus • Pago<br><hr>(12) 9****-*345">00002</label>
-                    <label id="00027" class="btn-sm btn-warning btn-numero" data-toggle="tooltip" data-name="Ronnie W" data-phone="(33) 9647" title="00027 • Ronnie • Reservado<br><hr>(51) 9****-*878">00027</label>
                 </div>
             </div>
         </section>
     `;
+}
+
+const gerarTemplate = (rifa, premios, numeros) => {
+    gerarSectionProduto(rifa, premios);
+    
+    gerarSectionNumero(numeros);
 
     return output;
 };
 
-export default (rifa, premios) => {
-    return gerarTemplate(rifa, premios);
+export default (rifa, premios, numeros) => {
+    return gerarTemplate(rifa, premios, numeros);
 }
 
-
+// Passa funções do escopo do módulo para o escopo global
 window.imgErro = imgErro;
