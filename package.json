@@ -21,9 +21,11 @@
     "author": "Rúben Oliveira",
     "repository": {
         "type": "git",
-        "url": "https://github.com/StartBootstrap/startbootstrap-shop-homepage.git"
+        "url": "https://github.com/filiperdt/tecgo-sorteios-aplicacao.git"
     },
     "dependencies": {
+        "@popperjs/core": "^2.11.2",
+        "acorn": "^8.7.0",
         "bootstrap": "5.1.3"
     },
     "devDependencies": {
@@ -37,7 +39,7 @@
         "sass": "1.43.2",
         "shelljs": "0.8.4",
         "upath": "2.0.1",
-        "webpack": "^5.40.0",
-        "webpack-cli": "^4.7.2"
+        "webpack": "^5.68.0",
+        "webpack-cli": "^4.9.2"
     }
 }

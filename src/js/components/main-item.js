@@ -1,3 +1,5 @@
+// import Tooltip from "../../node_modules/bootstrap/js/dist/tooltip.js";
+
 let output = '';
 let cont = 1;
 
@@ -209,6 +211,9 @@ const gerarSectionNumero = numeros => {
                     <span data-bs-toggle="modal" data-bs-target="#modalNumeroDisponivel">
                         <button type="button" id="00000" class="btn-sm btn-secondary btn-numero" data-bs-toggle="tooltip" title="00000 • Disponível">00000</button>
                     </span>
+                    <label id="00001" class="btn-sm btn-success btn-numero" data-bs-toggle="tooltip" data-bs-name="Mauricio" data-bs-phone="(51) 9295" title="00001 • Maurício • Pago<br><hr>(51) 9****-*689">00001</label>
+                    <label id="00002" class="btn-sm btn-success btn-numero" data-bs-toggle="tooltip" data-bs-name="Matheus " data-bs-phone="(21) 9299" title="00002 • Matheus • Pago<br><hr>(12) 9****-*345">00002</label>
+                    <label id="00027" class="btn-sm btn-warning btn-numero" data-bs-toggle="tooltip" data-bs-name="Ronnie W" data-bs-phone="(33) 9647" title="00027 • Ronnie • Reservado<br><hr>(51) 9****-*878">00027</label>
                 </div>
             </div>
         </section>

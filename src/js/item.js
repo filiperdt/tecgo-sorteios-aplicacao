@@ -1,8 +1,10 @@
 import {main, path, fnShowIndexTableList, fnRestartShowIndexTableList, fnRemoveElementosComIdsRepetidos, fnRemovePrimeirosElementosComIdsRepetidos} from './modules/utils.js';
-import index from './components/main-item.js';
+import mainItem from './components/main-item.js';
 import * as optionsRifa from './modules/Rifa/options.js';
 // import listRifa from './components/Rifa/list-rifa.js';
 // import readRifa from './components/Rifa/read-rifa.js';
+
+import inicializaTooltips from './inicializa-tooltips.js';
 
 var pathRifa = path + '/rifas';
 
@@ -46,7 +48,8 @@ const fnListNumero = (rifa, premios) => {
 }
 
 const fnMontarIndex = (rifa, premios, numeros) => {
-    main.innerHTML = index(rifa, premios, numeros);
+    main.innerHTML = mainItem(rifa, premios, numeros);
+    inicializaTooltips();
 };
 
 // // CRUD CLIENTE
