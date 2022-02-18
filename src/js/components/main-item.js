@@ -264,11 +264,11 @@ const gerarDivNumeros = (numeros, usuarios) => {
                         }
                     } else{
                         output += `
-                            <span data-bs-toggle="modal" data-bs-target="#modalNumeroDisponivel">
-                                <button type="button" id="${numeroComZerosEsquerda}" class="btn-sm btn-secondary btn-numero" data-bs-toggle="tooltip" data-bs-html="true" data-bs-trigger="hover" title="${numeroComZerosEsquerda} • Disponível">
+                            
+                                <button type="button" id="${numeroComZerosEsquerda}" class="btn-sm btn-secondary btn-numero" data-bs-toggle="tooltip" data-bs-html="true" data-bs-trigger="hover" data-bs-teste="Foi testado" title="${numeroComZerosEsquerda} • Disponível" onclick="exibirModalNumeroDisponivel('${numeroComZerosEsquerda}')">
                                     ${numeroComZerosEsquerda}
                                 </button>
-                            </span>
+                            
                         `;
                     }
                 });
@@ -315,6 +315,35 @@ const gerarSectionNumero = (numeros, usuarios) => {
     `;
 }
 
+const exibirModalNumeroDisponivel = numero => {
+    const modalNumeroDisponivel = document.getElementById("modalNumeroDisponivel");
+    
+    modalNumeroDisponivel.innerHTML = `
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalNumeroDisponivelLabel">Reservar cupom</h5>
+                    <!-- <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button> -->
+                </div>
+                <div class="modal-body">
+                    <p>Número: <span>${numero}</span><br>
+                    Status: <span>Disponível</span></p>
+                    <br>
+                    <p style="color: rgb(134, 0, 0);">Se este cupom não for pago em até <span>1 dia</span>, esta reserva será cancelada.</p>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary">Reservar</button>
+                </div>
+            </div>
+        </div>
+    `;
+
+    $('#modalNumeroDisponivel').modal('show');
+}
+
 const gerarTemplate = (rifa, premios, numeros, usuarios) => {
     gerarSectionProduto(rifa, premios);
     
@@ -329,3 +358,4 @@ export default (rifa, premios, numeros, usuarios) => {
 
 // Passa funções do escopo do módulo para o escopo global
 window.imgErro = imgErro;
+window.exibirModalNumeroDisponivel = exibirModalNumeroDisponivel;
