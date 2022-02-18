@@ -42,13 +42,26 @@ const fnListNumero = (rifa, premios) => {
     fetch(url, optionsRifa.optionsGetPadrao)
     .then(data => data.json())
     .then(numeros => {
-        fnMontarIndex(rifa, premios, numeros);
+        fnListUsuario(rifa, premios, numeros);
     })
     .catch(e => console.log(`Ocorreu um erro. fnListNumero: ${e}`));
 }
 
-const fnMontarIndex = (rifa, premios, numeros) => {
-    main.innerHTML = mainItem(rifa, premios, numeros);
+const fnListUsuario = (rifa, premios, numeros) => {
+    const arrayIdUsuarios = [];
+    arrayIdUsuarios.usuarioIds = [...new Set(numeros.map(numero => numero.usuario.id))];
+
+    const url = pathRifa + '/find-usuarios';
+    fetch(url, optionsRifa.optionsPostPadrao(arrayIdUsuarios))
+    .then(data => data.json())
+    .then(usuarios => {
+        fnMontarIndex(rifa, premios, numeros, usuarios);
+    })
+    .catch(e => console.log(`Ocorreu um erro. fnListUsuario: ${e}`));
+}
+
+const fnMontarIndex = (rifa, premios, numeros, usuarios) => {
+    main.innerHTML = mainItem(rifa, premios, numeros, usuarios);
     inicializaTooltips();
 };
 

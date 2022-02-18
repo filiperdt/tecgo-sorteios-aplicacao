@@ -42,3 +42,12 @@ export const optionsGetPadrao = {
     ...optionsPadrao,
     method: 'GET'
 };
+export const optionsPostPadrao = body => (
+    {
+        ...optionsPadraoComHeaders,
+        method: 'POST',
+        body: JSON.stringify({
+            ...body
+        })
+    }
+);

@@ -1,5 +1,3 @@
-// import Tooltip from "../../node_modules/bootstrap/js/dist/tooltip.js";
-
 let output = '';
 let cont = 1;
 
@@ -167,69 +165,166 @@ const listarPremios = premios => {
     }
 }
 
-const gerarSectionNumero = numeros => {
+const gerarDivBotõesStatus = numeros => {
+    const qtdePorStatus = numeros.reduce((valorAcumulador, valorArray) => {
+        valorArray.status === 'RESERVADO'? 
+        valorAcumulador.reservado++ : valorAcumulador.pago++;
+
+        if(valorArray.usuario.id === 0)
+            valorAcumulador.meusNumeros++;
+        
+        return valorAcumulador;
+    }, {reservado: 0, pago: 0, meusNumeros: 0});
+
+    const qtdeTotal = 10000;
+    const qtdeReservado = qtdePorStatus.reservado;
+    const qtdePago = qtdePorStatus.pago;
+    const qtdeDisponivel = qtdeTotal - qtdeReservado - qtdePago;
+    const qtdeMeusNumeros = qtdePorStatus.meusNumeros;
+
+    output += `
+        <div style="text-align: center;">
+            <button type="button" class="btn btn-primary mb-1" onClick=''>
+                <span>Todos</span>
+                <span><strong>${qtdeTotal}</strong></span>
+            </button>
+            <button type="button" class="btn btn-secondary mb-1" onClick=''>
+                <span>Disponíveis</span>
+                <span><strong>${qtdeDisponivel}</strong></span>
+            </button>
+            <button type="button" class="btn btn-warning mb-1" onClick=''>
+                <span>Reservados</span>
+                <span><strong>${qtdeReservado}</strong></span>
+            </button>
+            <button type="button" class="btn btn-success mb-1" onClick=''>
+                <span>Pagos</span>
+                <span><strong>${qtdePago}</strong></span>
+            </button>
+            <button type="button" class="btn btn-light mb-1" onClick=''>
+                <span>Meus números</span>
+                <span><strong>${qtdeMeusNumeros}</strong></span>
+            </button>
+        </div>
+    `;
+}
+
+const gerarDivFormPesquisarNumero = () => {
+    output += `
+        <!-- <div id="divFormPesquisarNumeroPorTelefoneEmail" class="row align-items-center justify-content-center">
+            <form id="formPesquisarNumeroPorTelefoneEmail" style="width: 25rem;">
+                <div class="mb-2">
+                    <input type="text" class="form-control" id="formControlPesquisarNumeroPorTelefoneEmail" name="formControlPesquisarNumeroPorTelefoneEmail" min=0 placeholder="Pesquisar pelo telefone (com DDD) ou email"></input>
+                    <div id="erroPesquisarNumeroPorTelefoneEmail" class="divMensagemErroPesquisarNumeroPorTelefoneEmail"></div>
+                </div>
+            </form>
+            <div>
+                <input type="submit" form="formPesquisarNumeroPorTelefoneEmail" class="btn btn-primary" style="display: none" onclick="fnPesquisarNumeroPorTelefoneEmailFormAction()" value="Pesquisar"><!-- Este input é o submit do form, apesar de estar fora dele. Pode ser colocado em qualquer lugar dentro do DOM -->
+            <!-- </div>
+        </div> --> -->
+    `;
+}
+
+const gerarDivNumeros = (numeros, usuarios) => {
+    const qtdeTotal = 10000;
+
+    output += `
+        <div class="flex-wrap m-4 d-flex" id="numbers-list" style="margin: 1.5rem 3.5rem !important;">
+            <div class="numbers flex-wrap d-flex">
+                `;
+                
+                [...Array(qtdeTotal).keys()].forEach(numeroQtdeTotal => {
+                    const numeroComZerosEsquerda = adicionarZerosEsquerda(numeroQtdeTotal);
+
+                    let indexNumero = numeros.map(numeroAtual => numeroAtual.numero).indexOf(numeroComZerosEsquerda);
+
+                    if(indexNumero !== -1){
+                        const numero = numeros[indexNumero];
+
+                        const usuario = usuarios.filter(usuarioAtual => usuarioAtual.id === numero.usuario.id)[0];
+
+                        const telefoneOcultado = usuario.telefone.length === 13?
+                            substituiIntervalo(usuario.telefone, 4, 9, '****-') : substituiIntervalo(usuario.telefone, 3, 8, '****-');
+                        
+                        const sobrenomeOcultado = ' ' + usuario.sobrenome.charAt(0) + '.';
+
+                        const statusCapitalizado = capitalizar(numero.status);
+
+                        if(statusCapitalizado === "Reservado"){
+                            output += `
+                                <button type="button" id="${numeroComZerosEsquerda}" class="btn-sm btn-warning btn-numero" data-bs-toggle="tooltip" data-bs-html="true" data-bs-trigger="hover" data-bs-name="${usuario.nome+sobrenomeOcultado}" data-bs-phone="${telefoneOcultado}" title="${numeroComZerosEsquerda} • ${usuario.nome+sobrenomeOcultado} • ${statusCapitalizado}<br><hr>${telefoneOcultado}">
+                                    ${numeroComZerosEsquerda}
+                                </button>
+                            `;
+                        } else if(statusCapitalizado === "Pago"){
+                            output += `
+                                <button type="button" id="${numeroComZerosEsquerda}" class="btn-sm btn-success btn-numero" data-bs-toggle="tooltip" data-bs-html="true" data-bs-trigger="hover" data-bs-name="${usuario.nome+sobrenomeOcultado}" data-bs-phone="${telefoneOcultado}" title="${numeroComZerosEsquerda} • ${usuario.nome+sobrenomeOcultado} • ${statusCapitalizado}<br><hr>${telefoneOcultado}">
+                                    ${numeroComZerosEsquerda}
+                                </button>
+                            `;
+                        }
+                    } else{
+                        output += `
+                            <span data-bs-toggle="modal" data-bs-target="#modalNumeroDisponivel">
+                                <button type="button" id="${numeroComZerosEsquerda}" class="btn-sm btn-secondary btn-numero" data-bs-toggle="tooltip" data-bs-html="true" data-bs-trigger="hover" title="${numeroComZerosEsquerda} • Disponível">
+                                    ${numeroComZerosEsquerda}
+                                </button>
+                            </span>
+                        `;
+                    }
+                });
+
+                output += `
+            </div>
+        </div>
+    `;
+}
+
+const adicionarZerosEsquerda = numero => {
+    let counter = 0;
+    
+    while(numero.toString().length < 6){
+        numero = '0' + numero;
+        counter++;
+    }
+
+    return numero;
+}
+
+function substituiIntervalo(str, inicio, fim, substituto) {
+    return str.substring(0, inicio) + substituto + str.substring(fim);
+}
+
+const capitalizar = str => str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+
+const gerarSectionNumero = (numeros, usuarios) => {
     output += `
         <section class="py-5 bg-dark">
             <div class="container px-4 px-lg-5 mt-5" style="text-align: center; color: white;">
                 <h2><srong>Números</srong></h2>
             </div>
-            <div style="text-align: center;">
-                <button type="button" class="btn btn-primary mb-1" onClick=''>
-                    <span>Todos</span>
-                    <span><strong>10000</strong></span>
-                </button>
-                <button type="button" class="btn btn-secondary mb-1" onClick=''>
-                    <span>Disponíveis</span>
-                    <span><strong>8500</strong></span>
-                </button>
-                <button type="button" class="btn btn-warning mb-1" onClick=''>
-                    <span>Reservados</span>
-                    <span><strong>1000</strong></span>
-                </button>
-                <button type="button" class="btn btn-success mb-1" onClick=''>
-                    <span>Pagos</span>
-                    <span><strong>500</strong></span>
-                </button>
-                <button type="button" class="btn btn-light mb-1" onClick=''>
-                    <span>Meus números</span>
-                    <span><strong>14</strong></span>
-                </button>
-            </div>
-            <!-- <div id="divFormPesquisarNumeroPorTelefoneEmail" class="row align-items-center justify-content-center">
-                <form id="formPesquisarNumeroPorTelefoneEmail" style="width: 25rem;">
-                    <div class="mb-2">
-                        <input type="text" class="form-control" id="formControlPesquisarNumeroPorTelefoneEmail" name="formControlPesquisarNumeroPorTelefoneEmail" min=0 placeholder="Pesquisar pelo telefone (com DDD) ou email"></input>
-                        <div id="erroPesquisarNumeroPorTelefoneEmail" class="divMensagemErroPesquisarNumeroPorTelefoneEmail"></div>
-                    </div>
-                </form>
-                <div>
-                    <input type="submit" form="formPesquisarNumeroPorTelefoneEmail" class="btn btn-primary" style="display: none" onclick="fnPesquisarNumeroPorTelefoneEmailFormAction()" value="Pesquisar"><!-- Este input é o submit do form, apesar de estar fora dele. Pode ser colocado em qualquer lugar dentro do DOM -->
-                <!-- </div>
-            </div> --> -->
-            <div class="flex-wrap m-4 d-flex" id="numbers-list" style="margin: 1.5rem 3.5rem !important;">
-                <div class="numbers flex-wrap d-flex">
-                    <span data-bs-toggle="modal" data-bs-target="#modalNumeroDisponivel">
-                        <button type="button" id="00000" class="btn-sm btn-secondary btn-numero" data-bs-toggle="tooltip" title="00000 • Disponível">00000</button>
-                    </span>
-                    <label id="00001" class="btn-sm btn-success btn-numero" data-bs-toggle="tooltip" data-bs-name="Mauricio" data-bs-phone="(51) 9295" title="00001 • Maurício • Pago<br><hr>(51) 9****-*689">00001</label>
-                    <label id="00002" class="btn-sm btn-success btn-numero" data-bs-toggle="tooltip" data-bs-name="Matheus " data-bs-phone="(21) 9299" title="00002 • Matheus • Pago<br><hr>(12) 9****-*345">00002</label>
-                    <label id="00027" class="btn-sm btn-warning btn-numero" data-bs-toggle="tooltip" data-bs-name="Ronnie W" data-bs-phone="(33) 9647" title="00027 • Ronnie • Reservado<br><hr>(51) 9****-*878">00027</label>
-                </div>
-            </div>
+            `;
+
+            gerarDivBotõesStatus(numeros);
+
+            gerarDivFormPesquisarNumero();
+
+            gerarDivNumeros(numeros, usuarios);
+
+            output += `
         </section>
     `;
 }
 
-const gerarTemplate = (rifa, premios, numeros) => {
+const gerarTemplate = (rifa, premios, numeros, usuarios) => {
     gerarSectionProduto(rifa, premios);
     
-    gerarSectionNumero(numeros);
+    gerarSectionNumero(numeros, usuarios);
 
     return output;
 };
 
-export default (rifa, premios, numeros) => {
-    return gerarTemplate(rifa, premios, numeros);
+export default (rifa, premios, numeros, usuarios) => {
+    return gerarTemplate(rifa, premios, numeros, usuarios);
 }
 
 // Passa funções do escopo do módulo para o escopo global
