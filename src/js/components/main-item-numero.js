@@ -7,7 +7,7 @@ const gerarNumero = (numeros, statusButton, usuarios, qtdeNumerosPorRifaEStatus)
         
             gerarDivBotõesStatus(qtdeNumerosPorRifaEStatus);
 
-            gerarDivFormPesquisarNumero();
+            // gerarDivFormPesquisarNumero();
 
             gerarDivNumeros(numeros, statusButton, usuarios);
 
@@ -53,7 +53,7 @@ const gerarDivBotõesStatus = (qtdeNumerosPorRifaEStatus) => {
 
 const gerarDivFormPesquisarNumero = () => {
     output += `
-        <!-- <div id="divFormPesquisarNumeroPorTelefoneEmail" class="row align-items-center justify-content-center">
+        <div id="divFormPesquisarNumeroPorTelefoneEmail" class="row align-items-center justify-content-center">
             <form id="formPesquisarNumeroPorTelefoneEmail" style="width: 25rem;">
                 <div class="mb-2">
                     <input type="text" class="form-control" id="formControlPesquisarNumeroPorTelefoneEmail" name="formControlPesquisarNumeroPorTelefoneEmail" min=0 placeholder="Pesquisar pelo telefone (com DDD) ou email"></input>
@@ -62,8 +62,8 @@ const gerarDivFormPesquisarNumero = () => {
             </form>
             <div>
                 <input type="submit" form="formPesquisarNumeroPorTelefoneEmail" class="btn btn-primary" style="display: none" onclick="fnPesquisarNumeroPorTelefoneEmailFormAction()" value="Pesquisar"><!-- Este input é o submit do form, apesar de estar fora dele. Pode ser colocado em qualquer lugar dentro do DOM -->
-            <!-- </div>
-        </div> --> -->
+            </div>
+        </div>
     `;
 }
 
@@ -112,13 +112,11 @@ const gerarDivNumeros = (numeros, statusButton, usuarios) => {
                                 </button>
                             `;
                         }
-                    } else if(statusButtonCapitalizado === "Todos"){
+                    } else if(statusButtonCapitalizado === "Todos" || statusButtonCapitalizado === "Disponivel"){
                         output += `
-                            
-                                <button type="button" id="${numeroComZerosEsquerda}" class="btn-sm btn-secondary btn-numero" data-bs-toggle="tooltip" data-bs-html="true" data-bs-trigger="hover" data-bs-teste="Foi testado" title="${numeroComZerosEsquerda} • Disponível" onclick="exibirModalNumeroDisponivel('${numeroComZerosEsquerda}')">
-                                    ${numeroComZerosEsquerda}
-                                </button>
-                            
+                            <button type="button" id="${numeroComZerosEsquerda}" class="btn-sm btn-secondary btn-numero" data-bs-toggle="tooltip" data-bs-html="true" data-bs-trigger="hover" title="${numeroComZerosEsquerda} • Disponível" onclick="exibirModalNumeroDisponivel('${numeroComZerosEsquerda}')">
+                                ${numeroComZerosEsquerda}
+                            </button>
                         `;
                     }
                 });

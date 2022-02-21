@@ -98,7 +98,9 @@ const managementButtonsStatusNumero = () => {
     btnTodosNumeros.addEventListener('click', function() {
         fnListNumeroRecarregar('/find-numeros/', 'TODOS');
     });
-    // btnDisponiveisNumeros.addEventListener('click', fnListNumeroRecarregar);
+    btnDisponiveisNumeros.addEventListener('click', function () {
+        fnListNumeroRecarregar('/find-numeros/', 'DISPONIVEL');
+    });
     btnReservadosNumeros.addEventListener('click', function() {
         fnListNumeroRecarregar('/find-numeros-status/', 'RESERVADO');
     });
