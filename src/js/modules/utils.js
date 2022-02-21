@@ -41,3 +41,12 @@ export const fnRemovePrimeirosElementosComIdsRepetidos = id => {
         }
     }
 }
+
+export const fnFormataData = data => {
+    const dataSeparada = data.split('-');
+    const dia = dataSeparada[2];
+    const mes = dataSeparada[1];
+    const ano = dataSeparada[0];
+
+    return dia + '/' + mes + '/' + ano
+}

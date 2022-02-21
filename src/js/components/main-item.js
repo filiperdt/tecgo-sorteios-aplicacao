@@ -39,4 +39,5 @@ export default () => {
     return gerarTemplate();
 }
 
+// Passa funções do escopo do módulo para o escopo global
 window.gerarSectionProduto = gerarSectionProduto;

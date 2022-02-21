@@ -23,7 +23,7 @@ const gerarProduto = (rifa, premios) => {
             <h1 class="display-5 fw-bolder">${rifa.titulo}</h1>
             <div class="fs-5 mb-5">
                 <p>R$${rifa.valor}</p>
-                <p>Data do sorteio: ${dataSorteio}, às ${horaSorteio}h${minutosSorteio}</p>
+                <p>Data do sorteio: ${fnFormataData(dataSorteio)}, às ${horaSorteio}h${minutosSorteio}</p>
             </div>
             `;
 

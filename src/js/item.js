@@ -1,4 +1,4 @@
-import {main, path, fnShowIndexTableList, fnRestartShowIndexTableList, fnRemoveElementosComIdsRepetidos, fnRemovePrimeirosElementosComIdsRepetidos} from './modules/utils.js';
+import {main, path, fnShowIndexTableList, fnRestartShowIndexTableList, fnRemoveElementosComIdsRepetidos, fnRemovePrimeirosElementosComIdsRepetidos, fnFormataData} from './modules/utils.js';
 import mainItem from './components/main-item.js';
 import mainItemPremio from './components/main-item-premio.js';
 import mainItemNumero from './components/main-item-numero.js';
@@ -226,9 +226,10 @@ window.addEventListener("load", () => {
     fnIndex();
 });
 
-// // Passa funções do escopo do módulo para o escopo global
+// Passa funções do escopo do módulo para o escopo global
 // window.fnReadRifa = fnReadRifa;
 // window.fnReadApolice = fnReadApolice;
 // window.fnShowIndexTableList = fnShowIndexTableList;
 // window.fnRestartShowIndexTableList = fnRestartShowIndexTableList;
 // window.fnPesquisarApoliceFormAction = fnPesquisarApoliceFormAction;
+window.fnFormataData = fnFormataData;
